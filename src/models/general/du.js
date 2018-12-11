@@ -97,7 +97,7 @@ export class DataModel {
 		if (result.rowCount <= 0) throw new errors.DBGetFailedError()
 		const row = result.rows[0]
 		const res = {}
-		Object.keys(this.schema).forEach(prop => {
+		Object.keys(this.schema).forEach((prop) => {
 			res[prop] = row[camelCase2underlineCase(prop)]
 		})
 		if (this.returnCreateTime) {
@@ -115,7 +115,7 @@ export class DataModel {
 		if (result.rowCount <= 0) throw new errors.DBGetFailedError()
 		const row = result.rows[0]
 		const res = {}
-		Object.keys(this.schema).forEach(prop => {
+		Object.keys(this.schema).forEach((prop) => {
 			res[prop] = row[camelCase2underlineCase(prop)]
 		})
 		if (this.returnCreateTime) {
@@ -132,9 +132,9 @@ export class DataModel {
 		const query = `SELECT * from "${this.scheme}".${this.table} ${paramsString};`
 		const queryParams = values || []
 		const result = await db.query(query, queryParams)
-		return result.rows.map(row => {
+		return result.rows.map((row) => {
 			const data = {}
-			Object.keys(this.schema).forEach(prop => {
+			Object.keys(this.schema).forEach((prop) => {
 				data[prop] = row[camelCase2underlineCase(prop)]
 			})
 			if (this.returnCreateTime) {
@@ -156,7 +156,8 @@ export class DataModel {
 	}
 
 	async getListCount(params, values) {
-		return await this.getViewListCount(this.table, this.pkey, params, values)
+		const r = await this.getViewListCount(this.table, this.pkey, params, values)
+		return r
 	}
 
 	async getViewList(view, pkey, params, values) {
@@ -164,10 +165,10 @@ export class DataModel {
 		const query = `SELECT * from "${this.scheme}".${view} ${paramsString};`
 		const queryParams = values || []
 		const result = await db.query(query, queryParams)
-		return result.rows.map(row => {
+		return result.rows.map((row) => {
 			const data = {}
-			result.fields.forEach(filed => {
-				const name = filed.name
+			result.fields.forEach((filed) => {
+				const { name } = filed
 				data[underlineCase2camelCase(name)] = row[name]
 			})
 			return data
@@ -175,7 +176,7 @@ export class DataModel {
 	}
 
 	async save(client = null) {
-		const pkey = this.pkey
+		const { pkey } = this
 		validate(this.props, getSchema(this.schema, Object.keys(this.props)))
 		try {
 			if (this.props[pkey]) {
@@ -184,7 +185,7 @@ export class DataModel {
 					await this.create(client)
 				} else {
 					const object = await this.get(this.props[pkey])
-					Object.keys(this.schema).forEach(key => {
+					Object.keys(this.schema).forEach((key) => {
 						if (key !== pkey) {
 							this.props[key] = ((this.props[key] !== null && this.props[key] !== undefined) ? this.props[key] : object[key])
 						}
