@@ -1,0 +1,59 @@
+{
+  "private": true,
+  "engines": {
+    "node": ">=6",
+    "npm": ">3.1"
+  },
+  "name": "bip-models",
+  "version": "1.0.6",
+  "description": "Implement data models for ToGroup.",
+  "main": "dist/models.js",
+  "scripts": {
+    "build": "babel-node bin/build",
+    "initdb": "babel-node bin/build; babel-node bin/init",
+    "updatedb": "babel-node bin/build; babel-node bin/update",
+    "test": "make build; NODE_ENV=test mocha --ui tdd --compilers js:babel-core/register"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "date-utils": "1.2.21",
+    "del": "^2.2.0",
+    "hashids": "1.0.2",
+    "joi": "9.2.0",
+    "log4js": "0.6.36",
+    "pg": "6.1.0",
+    "pg-then": "1.2.1",
+    "regenerator-runtime": "0.9.5",
+    "restify-errors": "4.2.3",
+    "source-map-support": "0.4.0",
+    "uuid": "3.2.1",
+    "webpack": "^2.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "json-loader": "^0.5.4",
+    "mkdirp": "^0.5.1",
+    "mocha": "^5.0.0",
+    "ncp": "^2.0.0",
+    "raw-loader": "^0.5.1"
+  },
+  "bugs": {
+    "url": "https://github.com/mobiusor/bip-models/issues"
+  },
+  "homepage": "https://github.com/mobiusor/bip-models#readme"
+}

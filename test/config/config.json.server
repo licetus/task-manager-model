@@ -1,0 +1,28 @@
+{
+	"database": {
+		"postgres": {
+			"bip": {
+				"db": "bip-test",
+				"host": "47.91.244.93",
+				"port": 5432,
+				"credentials": {
+					"username": "postgres",
+					"password": "postgres"
+				},
+				"default": true
+			},
+			"postgres": {
+				"db": "postgres",
+				"host": "47.91.244.93",
+				"port": 5432,
+				"credentials": {
+					"username": "postgres",
+					"password": "postgres"
+				}
+			}
+		}
+	},
+	"secret": {
+		"hash": "123-456-789-abc"
+	}
+}
