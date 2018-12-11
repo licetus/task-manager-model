@@ -8,7 +8,7 @@ function init(type, name, options) {
 		throw new Error('databse name "default" is reserved.')
 	}
 	const arr = [type === 'postgres' ? 'postgresql' : type, '://']
-	const credentials = options.credentials
+	const { credentials } = options
 	if (credentials) {
 		if (credentials.username) {
 			arr.push(options.credentials.username)
