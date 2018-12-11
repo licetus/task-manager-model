@@ -25,15 +25,13 @@ export class DataModel {
 	async isExist(pkey) {
 		const query = `SELECT * FROM "${this.scheme}".${this.table} WHERE ${this.pkey} = $1;`
 		const result = await db.query(query, [pkey])
-		if (result.rowCount <= 0) { return false }
-		return true
+		return result.rowCount > 0
 	}
 
 	async isExistByKey(key, value) {
 		const query = `SELECT * FROM "${this.scheme}".${this.table} WHERE ${camelCase2underlineCase(key)} = $1;`
 		const result = await db.query(query, [value])
-		if (result.rowCount <= 0) { return false }
-		return true
+		return result.rowCount > 0
 	}
 
 	copy() {
