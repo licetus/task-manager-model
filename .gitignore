@@ -1,4 +1,5 @@
 /node_modules
+/dist
 /test/config/config.json
 ncp-debug.log
 npm-debug.log
