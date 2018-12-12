@@ -1,12 +1,12 @@
 {
   "private": true,
   "engines": {
-    "node": ">=6",
-    "npm": ">3.1"
+    "node": ">=8.11.4",
+    "npm": ">=6.4.1"
   },
-  "name": "bip-models",
-  "version": "1.0.6",
-  "description": "Implement data models for ToGroup.",
+  "name": "task-manager-model",
+  "version": "0.0.1",
+  "description": "Implement data models for Task Manager.",
   "main": "dist/models.js",
   "scripts": {
     "build": "babel-node bin/build",
@@ -53,7 +53,7 @@
     "raw-loader": "^0.5.1"
   },
   "bugs": {
-    "url": "https://github.com/mobiusor/bip-models/issues"
+    "url": "https://github.com/licetus/task-manager-model/issues"
   },
-  "homepage": "https://github.com/mobiusor/bip-models#readme"
+  "homepage": "https://github.com/licetus/task-manager-model#readme"
 }
