@@ -24,7 +24,7 @@
     "pg": "6.1.0",
     "pg-then": "1.2.1",
     "regenerator-runtime": "0.9.5",
-    "restify-errors": "4.2.3",
+    "restify-errors": "^4.2.3",
     "source-map-support": "0.4.0",
     "uuid": "3.2.1",
     "webpack": "^2.7.0"
