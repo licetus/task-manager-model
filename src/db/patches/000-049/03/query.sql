@@ -20,7 +20,7 @@ $$ LANGUAGE PLPGSQL;
 CREATE TABLE "task".task
 (
 	id bigint DEFAULT "task".task_id() NOT NULL,
-	is_completed boolean,
+	is_completed boolean DEFAULT FALSE,
 	title varchar NOT NULL,
 	content varchar,
 	deadline bigint,
