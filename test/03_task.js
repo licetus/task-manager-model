@@ -2,7 +2,7 @@ import { checkObject } from '../src/utilities'
 
 const { Task } = global.models
 const taskDataAdd = { isCompleted: true, title: 'test title', content: 'test content', deadline: 2147483656 }
-const taskDataUpdate = { isCompleted: false, title: 'test title 02', content: 'test content 02', deadline: 2147483000 }
+const taskDataUpdate = { isCompleted: false, title: 'test title', content: 'test content', deadline: 2147483656 }
 
 describe('* task =======================', () => {
 	let taskId = 0
@@ -16,10 +16,13 @@ describe('* task =======================', () => {
 			checkObject(object.props, data)
 		})
 		it('Update', async () => {
-			const data = taskDataUpdate
+			const data = {
+				isCompleted: false,
+			}
 			data.id = taskId
-			const object = await new Task(data).save()
-			checkObject(object.props, data)
+			await new Task(data).update()
+			const res = await new Task().get(taskId)
+			checkObject(res, taskDataUpdate)
 		})
 		it('Fetch', async () => {
 			let res = await new Task().getList()

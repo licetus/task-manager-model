@@ -46,7 +46,7 @@ export class DataModel {
 		}
 		const propNames = Object.keys(this.props).map(prop => camelCase2underlineCase(prop)).join(',')
 		const propNumbers = Object.keys(this.props).map((prop, index) => `$${index + 1}`).join(',')
-		const params = Object.keys(this.props).map(prop => this.props[prop])
+		const params = Object.values(this.props)
 		const query = `
 			INSERT INTO "${this.scheme}".${this.table} (
 				${propNames}
@@ -71,7 +71,7 @@ export class DataModel {
 		const propAssigns = Object.keys(this.props).filter(key => key !== pkey).map((prop, index) => `${camelCase2underlineCase(prop)}=$${index + 2}`)
 		propAssigns.push('last_update_time = unix_now()')
 		const str = propAssigns.join(',')
-		const params = Object.keys(this.props).map(prop => this.props[prop])
+		const params = Object.values(this.props)
 		const query = `
 			UPDATE "${this.scheme}".${this.table}
 			SET ${str}
