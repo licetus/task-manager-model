@@ -17,7 +17,7 @@ const iterateKeysObj = (obj, keyFunc) => {
 }
 
 const iterateKeys = (obj, keyFunc) => {
-	if (typeof(obj) === 'string') return keyFunc(obj)
+	if (typeof (obj) === 'string') return keyFunc(obj)
 	return iterateKeysObj(obj, keyFunc)
 }
 
@@ -44,11 +44,11 @@ export const getAddedMonthTime = (timestamp, addedMonth = 1) => {
 	return originDate.getTime()
 }
 
-export const underlineCase2camelCase = (obj) =>
+export const underlineCase2camelCase = (obj) => {
 	iterateKeys(obj, (key) => {
 		let newKey = ''
 		let toUpperCase = false
-		for (let i = 0; i < key.length; i++) {
+		for (let i = 0; i < key.length; i += 1) {
 			if (key[i] === '_') {
 				toUpperCase = true
 			} else {
@@ -58,11 +58,12 @@ export const underlineCase2camelCase = (obj) =>
 		}
 		return newKey
 	})
+}
 
-export const camelCase2underlineCase = (obj) =>
+export const camelCase2underlineCase = (obj) => {
 	iterateKeys(obj, (key) => {
 		let newKey = ''
-		for (let i = 0; i < key.length; i++) {
+		for (let i = 0; i < key.length; i += 1) {
 			if (key[i] <= 'Z' && key[i] >= 'A') {
 				if (newKey) newKey += '_'
 				newKey += `${key[i].toLowerCase()}`
@@ -72,6 +73,7 @@ export const camelCase2underlineCase = (obj) =>
 		}
 		return newKey
 	})
+}
 
 // params: {orderBy, pageSize, next, page, filters}
 export const generateListParamsSqlString = (primaryName, params, isSum = false) => {
@@ -94,7 +96,7 @@ export const generateListParamsSqlString = (primaryName, params, isSum = false) 
 		limit = `LIMIT ${params.pageSize}`
 	}
 	if (params.filters && params.filters.length > 0) {
-		params.filters.forEach(filter => {
+		params.filters.forEach((filter) => {
 			const strings = filter.split(/=|LIKE|>|<|>=|<=|@>|<@|<>/)
 			const key = strings[0]
 			const f = `${camelCase2underlineCase(key)}${filter.substr(key.length, filter.length - key.length)}`
@@ -114,7 +116,7 @@ export const generateListParamsSqlString = (primaryName, params, isSum = false) 
 }
 
 export const checkObject = (object, data) => {
-	Object.keys(data).forEach(p => {
+	Object.keys(data).forEach((p) => {
 		if (p !== 'id' && data[p] !== undefined && data[p] !== null) object[p].should.equal(data[p])
 	})
 }
